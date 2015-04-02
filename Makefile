@@ -290,7 +290,7 @@ run: build
 	$(EXEC) ./ghostm
 
 clean:
-	rm -f ghostm $(OBJECTS)
+	rm -f ghostm aligner_gpu.o $(OBJECTS)
 #	rm -rf ../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)/ghostm
 
 clobber: clean
