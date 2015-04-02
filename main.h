@@ -28,8 +28,8 @@
 
 #include <string>
 
-const string kVersion="1.2";
-const string kRelease="October 6, 2011";
+const string kVersion="2.0";
+const string kRelease="April 2, 2015";
 
 int usage();
 

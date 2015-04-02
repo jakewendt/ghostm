@@ -26,7 +26,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <cutil.h>
+
+// JAKE #include <cutil.h>
+// JAKE do we need all of these?
+#include "helper_cuda.h"
+#include "helper_cuda_gl.h"
+#include "helper_cuda_drvapi.h"
+#include "helper_functions.h"
+#include "helper_image.h"
+#include "helper_math.h"
+#include "helper_string.h"
+#include "helper_timer.h"
+
+
 #include <stdint.h>
 #include "common.h"
 #include "aligner_gpu.h"
@@ -640,7 +652,7 @@ void printGpuInfo(int device){
   cudaDeviceProp deviceProp;
   cudaGetDeviceProperties(&deviceProp, device);
   fprintf(stdout, "  [GPU] device: \"%s\"\n", deviceProp.name);
-  fprintf(stdout, "  [GPU] global memory size: %u bytes (%gMB)\n", deviceProp.totalGlobalMem, (deviceProp.totalGlobalMem/1048576.0) );
+  fprintf(stdout, "  [GPU] global memory size: %lu bytes (%gMB)\n", deviceProp.totalGlobalMem, (deviceProp.totalGlobalMem/1048576.0) );
   //fprintf(stdout, "  [GPU] number of cores: %d\n", nGpuArchCoresPerSM[deviceProp.major] * deviceProp.multiProcessorCount);
 }
 
@@ -768,7 +780,7 @@ uint32_t SearchNextGpu
   uint32_t new_size;
 
   // debug ////////////////////////////
-  unsigned int timer;
+// JAKE  unsigned int timer;
   //float gpu_time;
   ///////////////////////////////////////
 
@@ -778,7 +790,7 @@ uint32_t SearchNextGpu
   g_start_query_id = start_query_id;
 
   //debug ////////////////////////////
-  cutCreateTimer(&timer);
+// JAKE  cutCreateTimer(&timer);
   ///////////////////////////////////////
   
 
@@ -801,8 +813,8 @@ uint32_t SearchNextGpu
 
   if (start_query_id == 0) { 
   //debug /////////////////////////
-    cutResetTimer(timer);
-    cutStartTimer(timer);
+// JAKE    cutResetTimer(timer);
+// JAKE    cutStartTimer(timer);
   ////////////////////////////////////
 
 
@@ -857,8 +869,8 @@ uint32_t SearchNextGpu
     // count each query alignments
     alignment_count_list[0] = 0;
     //debug /////////////////////////
-    cutResetTimer(timer);
-    cutStartTimer(timer);
+// JAKE    cutResetTimer(timer);
+// JAKE    cutStartTimer(timer);
     /////////////////////////////////////
 #if 0
     //debug /////////////////////////
@@ -924,8 +936,8 @@ uint32_t SearchNextGpu
     
 
     //debug /////////////////////////
-  cutResetTimer(timer);
-  cutStartTimer(timer);
+// JAKE  cutResetTimer(timer);
+// JAKE  cutStartTimer(timer);
   ////////////////////////////////////
   
   SetAlignmentList<<<NUMBER_SET_BLOCKS, NUMBER_SET_THREADS>>>(start_query_id, query_count, g_d_starts, 

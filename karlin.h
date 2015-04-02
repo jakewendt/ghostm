@@ -21,3 +21,9 @@ int BlastComputeLengthAdjustment(float K,
 
 #endif
 
+
+/* JAKE */
+/* Old compatibility names for C types.  */
+typedef unsigned long int ulong;
+typedef unsigned short int ushort;
+typedef unsigned int uint;
