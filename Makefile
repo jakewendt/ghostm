@@ -34,7 +34,8 @@
 ################################################################################
 
 # Location of the CUDA Toolkit
-CUDA_PATH       ?= /Developer/NVIDIA/CUDA-7.0
+#CUDA_PATH       ?= /Developer/NVIDIA/CUDA-7.0
+CUDA_PATH       ?= /Developer/NVIDIA/CUDA-6.5
 
 ##############################
 # start deprecated interface #
@@ -207,9 +208,13 @@ endif
 
 # Gencode arguments
 ifeq ($(TARGET_ARCH),armv7l)
-SMS ?= 20 30 32 35 37 50 52
+#	CUDA 6.5 doesn't support 52
+#SMS ?= 20 30 32 35 37 50 52
+SMS ?= 20 30 32 35 37 50
 else
-SMS ?= 20 30 35 37 50 52
+#SMS ?= 20 30 35 37 50 52
+#	CUDA 6.5 doesn't support 52
+SMS ?= 20 30 35 37 50
 endif
 
 ifeq ($(SMS),)
