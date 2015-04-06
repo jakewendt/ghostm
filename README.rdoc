@@ -27,7 +27,7 @@ I will slowly be updating the README to more accurately describe the newer insta
 GHOSTM requires nVIDIA's GPUs which are capable for CUDA, CUDA toolkit and SDK codes.
 CUDA Toolkit ver. >2.2
 GPU Computing SDK code samples (CUDA SDK, same version as CUDA Toolkit)
-Both two items can be downloaded from nVIDIA's homepage (http://developer.nvidia.com/object/cuda_download.html).
+Both items can be downloaded from nVIDIA's homepage (http://developer.nvidia.com/object/cuda_download.html).
 
 
 == Installation
@@ -54,10 +54,10 @@ Copy 'ghostm' file to any directory you like.
 
 == Usage
 
-GHOSTM requires specifically formatted database files and formatted query files for homology search. These files can be generated from FASTA formmated DNA/protein sequence files.
-Users have to prepare a database file in FASTA format and convert it into GHOSTM format database files by using GHOSTM "db" command at first. GHOSTM "db" command requires 2 args ([-i dbFastaFile] and [-o dbName]) and generates several files (.inf, .ind, .nam, .pos, .seq). All generated files are needed for the search. 
-Users also have to convert a query FASTA file into GHOSTM format query files. Users have to use another GHOSTM command "qry" for converting. It also requires 2 args ([-i qryFastaFile] and [-o qryName]). If the query sequeces are protein sequences, users have to add -t option to specify it. 
-For executing homology search, GHOSTM "aln" command requires at least 2 args ([-i qryName] and [-d dbName]). For GPU execution, GHOSTM requires -D option. If users do not specified a GPU device, CPU execution mode is used. GPU device ids can be checked by using "deviceQuery" command CUDA SDK.
+GHOSTM requires specifically formatted database files and formatted query files for homology search. These files can be generated from FASTA formated DNA/protein sequence files.
+Users have to prepare a database file in FASTA format and convert it into GHOSTM format database files by using GHOSTM "db" command first. GHOSTM "db" command requires 2 args ([-i dbFastaFile] and [-o dbName]) and generates several files (.inf, .ind, .nam, .pos, .seq). All generated files are needed for the search. 
+Users also have to convert a query FASTA file into GHOSTM format query files. Users have to use another GHOSTM command "qry" for converting. It also requires 2 args ([-i qryFastaFile] and [-o qryName]). If the query sequences are protein sequences, users have to add -t option to specify it. 
+For executing homology search, GHOSTM "aln" command requires at least 2 args ([-i qryName] and [-d dbName]). For GPU execution, GHOSTM requires -D option. If users do not specify a GPU device, CPU execution mode is used. GPU device ids can be checked by using "deviceQuery" command CUDA SDK (my device id is 0).
 Example
 
  $ ghostm db  -i ./db.fasta -o exdb
@@ -102,7 +102,7 @@ qry:	convert a FASTA file to GHOSTM format query files
 
 aln: 	Search homologs of queries from database
 
- ghostm aln [-i queries] [-d databes] [-D deviceId]
+ ghostm aln [-i queries] [-d database] [-D deviceId]
    [-v] [-o output] [-b best]
    [-G openGap] [-E extendGap] [-M scoreMatrix] 
    [-l CandidatesSize] [-s skipSize] [-t threshold] [-r regionSize] [-e extendSize]
@@ -122,7 +122,7 @@ aln: 	Search homologs of queries from database
   -G INT		Open gap penalty [11]
   -E INT		Extend gap penalty [1]
 
-  -l INT		Maximun size of the candidates (MB) [128]
+  -l INT		Maximum size of the candidates (MB) [128]
   -s INT		Skip number of query's K-mer [2]
   -r INT		The size of the regions [8]
   -t INT		Required minumum number of candidate seeds in a search region [2]
@@ -132,7 +132,7 @@ aln: 	Search homologs of queries from database
 
 == Search results
 
-GHOSTM outputs the tab-deliminated file as search results.
+GHOSTM outputs a tab-delimited file as search results.
 
  Example)
  query0  subject0        100     25      25      1       25      2.75456e-15     60.4622 
